@@ -1,14 +1,14 @@
 package main
 
 import (
-	"goroutines/goroutines"
+	//"goroutines/goroutines"
 	"goroutines/mutexAndWaitgroup"
 	
 )
 
 
 func main() {
-	goroutines.GoRoutines()
+	//goroutines.GoRoutines()
 	mutexandwaitgroup.MutexAndWait()
 	
 }
