@@ -7,6 +7,10 @@ import (
 
 var wg = &sync.WaitGroup{}
 var mutex = &sync.Mutex{}
+func hello(){
+	fmt.Println("hello")
+	wg.Done()
+}
 func MutexAndWait(){
 	
 	fmt.Println("Race condition - ------------------------ lemonr")
