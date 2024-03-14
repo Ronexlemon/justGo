@@ -2,13 +2,15 @@ package main
 
 import (
 	//"goroutines/goroutines"
-	"goroutines/mutexAndWaitgroup"
+	//"goroutines/mutexAndWaitgroup"
+	"goroutines/channels"
 	
 )
 
 
 func main() {
 	//goroutines.GoRoutines()
-	mutexandwaitgroup.MutexAndWait()
+	//mutexandwaitgroup.MutexAndWait()
+	channels.Channel()
 	
 }
