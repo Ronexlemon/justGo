@@ -3,7 +3,8 @@ package main
 import (
 	//"goroutines/goroutines"
 	//"goroutines/mutexAndWaitgroup"
-	"goroutines/channels"
+	//"goroutines/channels"
+	"goroutines/cryptoMathRandom"
 	
 )
 
@@ -11,6 +12,7 @@ import (
 func main() {
 	//goroutines.GoRoutines()
 	//mutexandwaitgroup.MutexAndWait()
-	channels.Channel()
+	//channels.Channel()
+	cryptomathrandom.CryptoMathRandom()
 	
 }
