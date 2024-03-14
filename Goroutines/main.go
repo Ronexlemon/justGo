@@ -14,5 +14,6 @@ func main() {
 	//mutexandwaitgroup.MutexAndWait()
 	//channels.Channel()
 	cryptomathrandom.CryptoMathRandom()
+	cryptomathrandom.CryptoRandom()
 	
 }

@@ -2,8 +2,9 @@ package cryptomathrandom
 
 import (
 	"fmt"
-	"math/rand"
-	
+	"math/big"
+	// "math/rand"
+	"crypto/rand"
 )
 
 func CryptoMathRandom() {
@@ -11,5 +12,13 @@ func CryptoMathRandom() {
 
 	//random number
 	
-	fmt.Println(rand.Intn(5)) //generates a random integer between 0 and 9
+	//fmt.Println(rand.Intn(5)) //generates a random integer between 0 and 9
+}
+
+
+func CryptoRandom(){
+	myRandomNum,_:= rand.Int(rand.Reader,big.NewInt(5))
+
+	fmt.Println(myRandomNum)
+
 }
