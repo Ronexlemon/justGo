@@ -6,7 +6,8 @@ import (
 	//"goroutines/channels"
 	// "goroutines/cryptoMathRandom"
 	//"goroutines/variables"
-	 "goroutines/userInput"
+	 //"goroutines/userInput"
+	 "goroutines/conversion"
 	
 )
 
@@ -18,6 +19,7 @@ func main() {
 	// cryptomathrandom.CryptoMathRandom()
 	// cryptomathrandom.CryptoRandom()
 	// variables.Variables()
-	userinput.UserInput()
+	//userinput.UserInput()
+	conversion.Conversion()
 	
 }
