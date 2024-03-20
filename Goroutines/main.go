@@ -18,4 +18,5 @@ func main() {
 	// cryptomathrandom.CryptoRandom()
 	variables.Variables()
 	
+	
 }
