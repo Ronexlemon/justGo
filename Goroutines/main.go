@@ -5,7 +5,8 @@ import (
 	//"goroutines/mutexAndWaitgroup"
 	//"goroutines/channels"
 	// "goroutines/cryptoMathRandom"
-	"goroutines/variables"
+	//"goroutines/variables"
+	 "goroutines/userInput"
 	
 )
 
@@ -16,7 +17,7 @@ func main() {
 	//channels.Channel()
 	// cryptomathrandom.CryptoMathRandom()
 	// cryptomathrandom.CryptoRandom()
-	variables.Variables()
-	
+	// variables.Variables()
+	userinput.UserInput()
 	
 }
