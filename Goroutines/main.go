@@ -1,15 +1,15 @@
 package main
 
-import (
-	//"goroutines/goroutines"
-	//"goroutines/mutexAndWaitgroup"
-	//"goroutines/channels"
-	// "goroutines/cryptoMathRandom"
-	//"goroutines/variables"
-	 //"goroutines/userInput"
-	 "goroutines/conversion"
-	
-)
+import 
+
+//"goroutines/goroutines"
+//"goroutines/mutexAndWaitgroup"
+//"goroutines/channels"
+// "goroutines/cryptoMathRandom"
+//"goroutines/variables"
+//"goroutines/userInput"
+//"goroutines/conversion"
+"goroutines/timee"
 
 
 func main() {
@@ -20,6 +20,7 @@ func main() {
 	// cryptomathrandom.CryptoRandom()
 	// variables.Variables()
 	//userinput.UserInput()
-	conversion.Conversion()
+	//conversion.Conversion()
+	timee.Time()
 	
 }
