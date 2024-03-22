@@ -9,7 +9,8 @@ import
 //"goroutines/variables"
 //"goroutines/userInput"
 //"goroutines/conversion"
-"goroutines/timee"
+//"goroutines/timee"
+"goroutines/pointers"
 
 
 func main() {
@@ -21,6 +22,7 @@ func main() {
 	// variables.Variables()
 	//userinput.UserInput()
 	//conversion.Conversion()
-	timee.Time()
+	//timee.Time()
+	pointers.Pointer()
 	
 }
