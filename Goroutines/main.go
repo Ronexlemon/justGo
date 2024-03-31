@@ -13,7 +13,8 @@ import(
 // "goroutines/pointers"
 
 	
-	"goroutines/Array"
+	//"goroutines/Array"
+	"goroutines/Slices"
 )
 
 
@@ -28,6 +29,7 @@ func main() {
 	//conversion.Conversion()
 	//timee.Time()
 	//pointers.Pointer()
-	array.Arrays()
+	//array.Arrays()
+	slices.Slices()
 	
 }
