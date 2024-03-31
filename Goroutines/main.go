@@ -1,20 +1,21 @@
 package main
 
-import(
+import (
 
-// "goroutines/goroutines"
-// "goroutines/mutexAndWaitgroup"
-// "goroutines/channels"
-// "goroutines/cryptoMathRandom"
-// "goroutines/variables"
-// "goroutines/userInput"
-// "goroutines/conversion"
-// "goroutines/timee"
-// "goroutines/pointers"
+	// "goroutines/goroutines"
+	// "goroutines/mutexAndWaitgroup"
+	// "goroutines/channels"
+	// "goroutines/cryptoMathRandom"
+	// "goroutines/variables"
+	// "goroutines/userInput"
+	// "goroutines/conversion"
+	// "goroutines/timee"
+	// "goroutines/pointers"
 
-	
 	//"goroutines/Array"
-	"goroutines/Slices"
+	//"goroutines/Slices"
+	
+    "goroutines/map"
 )
 
 
@@ -30,6 +31,7 @@ func main() {
 	//timee.Time()
 	//pointers.Pointer()
 	//array.Arrays()
-	slices.Slices()
+	//slices.Slices()
+	mapping.Mapping()
 	
 }
