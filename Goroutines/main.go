@@ -16,7 +16,8 @@ import (
 	//"goroutines/Slices"
 	
    // "goroutines/map"
-	"goroutines/structs"
+	//"goroutines/structs"
+	"goroutines/controlflows"
 )
 
 
@@ -34,6 +35,7 @@ func main() {
 	//array.Arrays()
 	//slices.Slices()
 	//mapping.Mapping()
-	structs.Structs()
+	//structs.Structs()
+	controlflows.IfStatement()
 	
 }
