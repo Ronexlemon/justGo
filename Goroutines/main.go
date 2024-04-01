@@ -36,6 +36,7 @@ func main() {
 	//slices.Slices()
 	//mapping.Mapping()
 	//structs.Structs()
-	controlflows.IfStatement()
+	//controlflows.IfStatement()
+	controlflows.SwitchCase()
 	
 }
