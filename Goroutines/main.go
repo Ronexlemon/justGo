@@ -18,7 +18,8 @@ import (
    // "goroutines/map"
 	//"goroutines/structs"
 	//"goroutines/controlflows"
-	"goroutines/functions"
+	//"goroutines/functions"
+	"goroutines/methods"
 )
 
 
@@ -40,6 +41,7 @@ func main() {
 	//controlflows.IfStatement()
 	//controlflows.SwitchCase()
 	//controlflows.Loops()
-	functions.Functions()
+	//functions.Functions()
+	methods.Methods()
 	
 }
