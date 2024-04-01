@@ -17,4 +17,17 @@ func Loops(){
 	for key,value := range days{
 		fmt.Printf("the key is %d and value %s\n",key,value)
 	}
+
+	//while for
+	value:=1
+
+	for value <10{
+		if value ==6{
+			value ++
+			continue
+		}
+		
+		fmt.Println("value is",value)
+		value ++
+	}
 }
