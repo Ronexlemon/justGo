@@ -15,7 +15,8 @@ import (
 	//"goroutines/Array"
 	//"goroutines/Slices"
 	
-    "goroutines/map"
+   // "goroutines/map"
+	"goroutines/structs"
 )
 
 
@@ -32,6 +33,7 @@ func main() {
 	//pointers.Pointer()
 	//array.Arrays()
 	//slices.Slices()
-	mapping.Mapping()
+	//mapping.Mapping()
+	structs.Structs()
 	
 }
