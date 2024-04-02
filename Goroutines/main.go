@@ -21,7 +21,8 @@ import (
 	//"goroutines/functions"
 	//"goroutines/methods"
 	//"goroutines/defer"
-	"goroutines/files"
+	//"goroutines/files"
+	"goroutines/webRequests"
 )
 
 
@@ -46,7 +47,8 @@ func main() {
 	//functions.Functions()
 	//methods.Methods()
 	//defers.Defer()
-	files.Files()
+	//files.Files()
+	webrequests.WebRequests()
 	
 	
 }
