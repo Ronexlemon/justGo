@@ -23,7 +23,8 @@ import (
 	//"goroutines/defer"
 	//"goroutines/files"
 	//"goroutines/webRequests"
-	"goroutines/urlhandling"
+	//"goroutines/urlhandling"
+	"goroutines/server"
 )
 
 
@@ -50,7 +51,8 @@ func main() {
 	//defers.Defer()
 	//files.Files()
 	//webrequests.WebRequests()
-	urlhandling.UrlHandling()
+	//urlhandling.UrlHandling()
+	server.Servers()
 	
 	
 }
