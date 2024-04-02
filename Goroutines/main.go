@@ -20,7 +20,8 @@ import (
 	//"goroutines/controlflows"
 	//"goroutines/functions"
 	//"goroutines/methods"
-	"goroutines/defer"
+	//"goroutines/defer"
+	"goroutines/files"
 )
 
 
@@ -44,7 +45,8 @@ func main() {
 	//controlflows.Loops()
 	//functions.Functions()
 	//methods.Methods()
-	defers.Defer()
+	//defers.Defer()
+	files.Files()
 	
 	
 }
