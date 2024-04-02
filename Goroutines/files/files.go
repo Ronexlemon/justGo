@@ -15,13 +15,9 @@ func Files(){
 
 	file,err:=os.Create("./files/myfile.txt");
 
-	if err !=nil{
-		panic(err);
-	}
+	checkNilError(err)
 	length,err:=io.WriteString(file,content)
-	if err !=nil{
-		panic(err);
-	}
+	checkNilError(err)
 	fmt.Println("len is:",length)
 
 	defer file.Close()
@@ -34,12 +30,17 @@ func Files(){
 
 func  ReadFiles(filename string){
 	databyte,err:=os.ReadFile(filename) //read into the bytes format
-	if err!= nil {	
-		panic(err)}
+	checkNilError(err)                   //checking if there was
 		
 		data:=string(databyte)
 		
 		fmt.Println(data)
 
+
+}
+
+func checkNilError(err error){
+	if err!= nil {	
+		panic(err)}
 
 }
