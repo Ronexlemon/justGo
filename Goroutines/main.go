@@ -19,7 +19,8 @@ import (
 	//"goroutines/structs"
 	//"goroutines/controlflows"
 	//"goroutines/functions"
-	"goroutines/methods"
+	//"goroutines/methods"
+	"goroutines/defer"
 )
 
 
@@ -42,6 +43,8 @@ func main() {
 	//controlflows.SwitchCase()
 	//controlflows.Loops()
 	//functions.Functions()
-	methods.Methods()
+	//methods.Methods()
+	defers.Defer()
+	
 	
 }
