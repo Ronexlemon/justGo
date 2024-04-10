@@ -52,8 +52,9 @@ func main() {
 	//files.Files()
 	//webrequests.WebRequests()
 	//urlhandling.UrlHandling()
-	server.Servers()
-	server.PerformGetRequest()
+	// server.Servers()
+	// server.PerformGetRequest()
+	server.EncodeJson()
 	
 	
 }
