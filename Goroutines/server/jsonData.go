@@ -37,3 +37,32 @@ func EncodeJson() {
 	fmt.Println(responseString.String())
 
 }
+
+func DecodeJson(){
+	jsonData:= []byte(`
+	{
+		"course_name": "go lang",
+		"price": 200,
+		"website": "lemonr.io",
+		"tags": ["webdev","js"]
+}	
+	`)
+
+	var lemonrCourses course
+
+	checkValid :=json.Valid(jsonData)
+	if checkValid{
+		fmt.Println("Json data wa valid")
+		json.Unmarshal(jsonData, &lemonrCourses)
+		fmt.Printf("%#v\n",lemonrCourses)
+	}else{
+		fmt.Println("All json was not valid")
+	}
+
+	//some cases where you just want to add data to key value
+
+	var myCourses map[string]interface{}
+	json.Unmarshal(jsonData, &myCourses)
+	fmt.Printf("%#v\n",myCourses)
+
+}

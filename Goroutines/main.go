@@ -54,7 +54,9 @@ func main() {
 	//urlhandling.UrlHandling()
 	// server.Servers()
 	// server.PerformGetRequest()
-	server.EncodeJson()
+	//server.EncodeJson()
+	server.DecodeJson()
+	
 	
 	
 }
