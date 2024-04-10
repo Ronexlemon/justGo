@@ -16,7 +16,7 @@ func PerformPostFormRequets() {
 	data.Add("last_name", "John")
 	data.Add("email","johndoe@gmail.com")
 
-	response,err :=http.PostForm(myUrl,data)
+	response,err :=http.PostForm(myurl,data)
 	checkNilError(err)
 
 	defer response.Body.Close()
