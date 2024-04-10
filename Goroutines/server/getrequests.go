@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strings"
 )
 
 
@@ -13,7 +14,7 @@ func GetRequests(){
 }
 
 func PerformGetRequest(){
-	const myUrl = "http://localhost:3000/get";
+	const myUrl = "https://atlas-ke.net/login";
 	response,err := http.Get(myUrl)
 	checkNill(err)
 
@@ -21,8 +22,13 @@ func PerformGetRequest(){
 	fmt.Println("Status code",response.StatusCode)
 	fmt.Println("Content length", response.ContentLength)
 
+	var responseString strings.Builder
+
 	Content,_:=io.ReadAll(response.Body)
-	fmt.Println(string(Content))
+	byteCount,_ := responseString.Write(Content)
+	fmt.Println("byte count is",byteCount)
+	fmt.Println(responseString.String())
+	//fmt.Println(string(Content))
 
 }
 
