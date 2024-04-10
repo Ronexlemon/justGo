@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-var url = "http://localhost:3000/post"
+var myUrl = "http://localhost:3000/post"
 
 func PerformPostRequests(){
 	welcome:= "welcome to post requests"
@@ -22,7 +22,7 @@ func PerformPostRequests(){
 	"population":10000}
 	`)
 
-	res,err:=http.Post(url,"application/json",requestsBody)
+	res,err:=http.Post(myUrl,"application/json",requestsBody)
 	checkNilError(err)
 
 	defer res.Body.Close()
