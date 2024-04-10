@@ -53,6 +53,7 @@ func main() {
 	//webrequests.WebRequests()
 	//urlhandling.UrlHandling()
 	server.Servers()
+	server.PerformGetRequest()
 	
 	
 }
