@@ -2,20 +2,23 @@ package controller
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"goapi/model"
 	"log"
+	"net/http"
 
+	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const connectionString = " mongodb+srv://huge65702:huge65701@cluster0.9j3wobi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" //just for test
+const connectionString = "mongodb+srv://huge65702:huge65701@cluster0.9j3wobi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" //just for test
 
 const dbName = "netflix"
-const colName = "watvhlist"
+const colName = "watchlist"
 
 var collection *mongo.Collection
 
@@ -100,6 +103,60 @@ func getAllRecords()[]primitive.M{
 
 
 }
+
+//Controllers
+
+func GetAllMovies(w http.ResponseWriter, r *http.Request){
+
+	w.Header().Set("Content-Type","application/x-www-form-urlencode")
+	allMovies:=getAllRecords()
+	json.NewEncoder(w).Encode(allMovies)
+}
+
+//delete one record
+
+func DeleteAMovie(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Content-Type","application/x-www-form-urlencode")
+	w.Header().Set("Allow-Control-Allow-Methods","DELETE")
+	params:= mux.Vars(r)
+
+	deleteOneRecord(params["id"])
+	json.NewEncoder(w).Encode(params["id"])
+
+}
+
+//function deletAll
+func DeleteAllMovies(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Content-Type","application/x-www-form-urlencode")
+	w.Header().Set("Allow-Control-Allow-Methods","DELETE")
+	deleteAllRecords()
+	json.NewEncoder(w).Encode("All movies deleted")
+}
+
+//update on record
+
+func MarkMovieAsWatched(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Content-Type","application/x-www-form-urlencode")
+	w.Header().Set("Allow-Control-Allow-Methods","POST")
+	
+	params:=mux.Vars(r)
+	updateOneRecord(params["id"])
+	json.NewEncoder(w).Encode(params["id"])
+
+}
+
+//function insert
+func CreateMovie(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Content-Type","application/x-www-form-urlencode")
+	w.Header().Set("Allow-Control-Allow-Methods","POST")
+	
+	var movie model.Netflix
+
+	_=json.NewDecoder(r.Body).Decode(&movie)
+	insertOneMovie(movie)
+	json.NewEncoder(w).Encode(movie)
+}
+
 func checkNil(err error){
 	if err !=nil{
 		log.Fatal(err)
