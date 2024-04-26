@@ -68,9 +68,16 @@ func deleteOneRecord(movieId string){
 	filter:= bson.M{"_id":id}
 	result,err:= collection.DeleteOne(context.Background(),filter)
 	checkNil(err)
-	fmt.Println("delete successful",result.DeletedCount)
+	fmt.Println("delete successful",result)
 
 	
+}
+//delete all
+func deleteAllRecords(){
+	
+	deleteResult,err :=collection.DeleteMany(context.Background(),bson.D{{}})
+	checkNil(err)
+	fmt.Println("Number of movies deleted",deleteResult.DeletedCount)
 }
 
 func checkNil(err error){
