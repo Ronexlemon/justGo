@@ -80,6 +80,26 @@ func deleteAllRecords(){
 	fmt.Println("Number of movies deleted",deleteResult.DeletedCount)
 }
 
+//get all from mongo
+
+func getAllRecords()[]primitive.M{
+	cur,err:=collection.Find(context.Background(),bson.D{{}}) //return of a cursor
+	checkNil(err)
+	
+	var movies []primitive.M
+	for cur.Next(context.Background()){
+		var movie bson.M
+		err:=cur.Decode(&movie)
+		checkNil(err)
+		movies=append(movies,movie)
+	}
+
+	defer cur.Close(context.Background())
+	return movies
+	
+
+
+}
 func checkNil(err error){
 	if err !=nil{
 		log.Fatal(err)
