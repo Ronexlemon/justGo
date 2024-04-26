@@ -3,6 +3,7 @@ package controller
 import (
 	"context"
 	"fmt"
+	"goapi/model"
 	"log"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -36,8 +37,22 @@ fmt.Println("collection instance is ready yollow!!")
 
 }
 
+
+//mongodb helpers - file
+
+//insert one record
+
+func insertOneMovie(movie model.Netflix){
+	inserted,err:=collection.InsertOne(context.TODO(),movie)
+	checkNil(err)
+	fmt.Println("inserted one movie in db with id",inserted.InsertedID)
+
+}
+
+
 func checkNil(err error){
 	if err !=nil{
 		log.Fatal(err)
 	}
 }
+
