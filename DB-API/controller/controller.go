@@ -61,6 +61,17 @@ func updateOneRecord(movieId string){
 	fmt.Println("Successful update the watched field",result.ModifiedCount)
 }
 
+//delete one record
+func deleteOneRecord(movieId string){
+	id,_:= primitive.ObjectIDFromHex(movieId)
+
+	filter:= bson.M{"_id":id}
+	result,err:= collection.DeleteOne(context.Background(),filter)
+	checkNil(err)
+	fmt.Println("delete successful",result.DeletedCount)
+
+	
+}
 
 func checkNil(err error){
 	if err !=nil{
