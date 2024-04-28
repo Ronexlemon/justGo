@@ -43,6 +43,12 @@ func InsertOneMovie(movie model.Netflix) {
 	fmt.Println("inserted one movie in db with id", inserted.InsertedID)
 
 }
+func InsertMovie(movie model.Netflix) {
+	inserted, err := collection.InsertOne(context.TODO(), movie)
+	checkNil(err)
+	fmt.Println("inserted one movie in db with id", inserted.InsertedID)
+
+}
 
 // update one record
 func UpdateOneRecord(movieId string) {
