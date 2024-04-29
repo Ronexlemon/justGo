@@ -2,14 +2,14 @@ package models
 
 
 type Store struct {
-	StoreId       int       `json:id"`
+	StoreId       string      `json:id"`
 	StoreName     string    `json:"name"`
 	StoreAddress  string    `json:"address"`
 	StoreProducts *Product `json:"products"`
 }
 
 type Product struct {
-	ProductId   int    `json:"id"`
+	ProductId   string   `json:"id"`
 	ProductName string `json:"name"`
 
 	ProductPrice int `json:"price"`
