@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"goconcurrency/racecondition"
 	"net/http"
 	"sync"
 	// "time"
@@ -15,6 +16,20 @@ func main(){
 	welcome:="Welcome to go concurrency"
 	fmt.Println(welcome)
 
+	
+	racecondition.RaceCondition()
+	
+	
+}
+
+// func greeter(s string){
+// 	for i:=0; i< 6;i++{
+// 		time.Sleep(3 * time.Millisecond)
+// 		fmt.Println(s)
+// 	}
+// }
+
+func callStatusCode(){
 	websiteList := []string{
 		"https://www.google.com",
 		"https://www.github.com",
@@ -31,16 +46,7 @@ func main(){
 	}
 	wg.Wait()
 	fmt.Println("signals",signals)
-	
-	
 }
-
-// func greeter(s string){
-// 	for i:=0; i< 6;i++{
-// 		time.Sleep(3 * time.Millisecond)
-// 		fmt.Println(s)
-// 	}
-// }
 
 func getStatusCode(endpoint string){
 	
