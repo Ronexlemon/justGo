@@ -3,13 +3,32 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"sync"
 	// "time"
 )
+
+var wg sync.WaitGroup
 
 func main(){
 	welcome:="Welcome to go concurrency"
 	fmt.Println(welcome)
-	getStatusCode("https://github.com/RonexLemon")
+
+	websiteList := []string{
+		"https://www.google.com",
+		"https://www.github.com",
+
+		"https://www.stackoverflow.com",
+		"https://www.udemy.com",
+		"https://www.golangprograms.com",
+		
+	}
+	for _,value:=range websiteList{
+		go getStatusCode(value)
+		wg.Add(1)
+
+	}
+	wg.Wait()
+	
 	
 }
 
@@ -21,10 +40,11 @@ func main(){
 // }
 
 func getStatusCode(endpoint string){
+	defer wg.Done()
 	res,err:=http.Get(endpoint)
 	checkNill(err)
 
-	fmt.Println(res.Status)
+	fmt.Printf("%d status code for %s \n",res.StatusCode,endpoint)
 }
 
 func checkNill(err error){
