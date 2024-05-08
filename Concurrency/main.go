@@ -7,7 +7,9 @@ import (
 	// "time"
 )
 
-var wg sync.WaitGroup
+var wg sync.WaitGroup //pointer
+var mut sync.Mutex  //pointer
+var signals = []string{"test"}
 
 func main(){
 	welcome:="Welcome to go concurrency"
@@ -28,6 +30,7 @@ func main(){
 
 	}
 	wg.Wait()
+	fmt.Println("signals",signals)
 	
 	
 }
@@ -40,9 +43,13 @@ func main(){
 // }
 
 func getStatusCode(endpoint string){
+	
 	defer wg.Done()
 	res,err:=http.Get(endpoint)
 	checkNill(err)
+	mut.Lock()
+	signals = append(signals, endpoint)
+	mut.Unlock()
 
 	fmt.Printf("%d status code for %s \n",res.StatusCode,endpoint)
 }
