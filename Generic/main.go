@@ -1,15 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-type num interface{
-	int | float64 | string |float32 |int16 |int8
-}
+	"golang.org/x/exp/constraints"
+)
 
-func Add[T num](a T, b T)T{
+// type num interface{
+// 	int | float64 | string |float32 |int16 |int8
+// }
+
+// func Add[T num](a T, b T)T{
+// 	return  a+b
+// }
+
+func Add[T constraints.Ordered](a T, b T)T{
 	return  a+b
 }
-
 
 func main(){
 	result := Add("ron","jon")
