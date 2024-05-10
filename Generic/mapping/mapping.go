@@ -1,8 +1,10 @@
 package mapping
 
+import "golang.org/x/exp/constraints"
 
-func MapValues(values []int,mapfunc func (int) int)[]int{
-	var newValues []int
+
+func MapValues[T constraints.Ordered](values []T,mapfunc func (T) T)[]T{
+	var newValues []T
 
 	for _,v := range values{
 		newValue := mapfunc(v)
