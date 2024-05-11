@@ -11,4 +11,6 @@ func main(){
 	fmt.Println(welcome)
 	channels.Channels()
 	channels.BufferedChannels()
+	channels.ChannelsSimultenous()
+	channels.ChannelWithLoad()
 }
