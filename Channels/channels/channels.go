@@ -28,3 +28,16 @@ func Channels(){
 	fmt.Println(result)
 
 }
+
+func BufferedChannels(){
+
+	dataChan:= make(chan A,2)
+
+	dataChan <- A{678,"john doe"}
+	dataChan <- A{678,"john de"}
+
+	results := <- dataChan
+	result2 := <- dataChan
+	fmt.Println(results)
+	fmt.Println(result2)
+}
