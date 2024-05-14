@@ -15,4 +15,5 @@ func main(){
 	channels.ChannelsSimultenous()
 	channels.ChannelWithLoad()
 	channel02.Channel02()
+	channel02.BuffereChan()
 }
