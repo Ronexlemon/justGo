@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"gochannels/channel02"
 	"gochannels/channels"
 )
 
@@ -13,4 +14,5 @@ func main(){
 	channels.BufferedChannels()
 	channels.ChannelsSimultenous()
 	channels.ChannelWithLoad()
+	channel02.Channel02()
 }
