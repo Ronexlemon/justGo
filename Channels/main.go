@@ -16,4 +16,5 @@ func main(){
 	channels.ChannelWithLoad()
 	channel02.Channel02()
 	channel02.BuffereChan()
+	channel02.RangeAndClose()
 }
