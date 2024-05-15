@@ -53,7 +53,7 @@ func WithoutGeneric() {
 
 //end
 
-func sum[T SunConstant | constraints.Ordered](m map[string] T)T{
+func sum[K comparable,T SunConstant | constraints.Ordered](m map[K] T)T{
 	var s T
 	for _, value := range m {
 		s += value
@@ -65,5 +65,5 @@ func sum[T SunConstant | constraints.Ordered](m map[string] T)T{
 func WithGeneric(){
 	ints := map[string]int64{"first": 20, "second": 30}
 	floats := map[string]float64{"first": 20.50, "second": 30.05}
-	fmt.Printf("Generic Sums: %v and %v \n", sum[int64](ints), sum[float64](floats))
+	fmt.Printf("Generic Sums: %v and %v \n", sum(ints), sum(floats))
 }
