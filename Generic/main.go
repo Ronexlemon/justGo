@@ -27,4 +27,6 @@ func main(){
 	
 	fmt.Println(mapping.MapValues([]int{1,2,3,4,5},func(n int)int{return n*2}))
 	fmt.Println(result)
+	mapping.WithoutGeneric()
+	mapping.WithGeneric()
 }
