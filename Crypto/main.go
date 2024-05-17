@@ -1,9 +1,10 @@
 package main
 
 import (
+	"crypto/aes"
 	"crypto/rand"
 	"fmt"
-	
+
 	"math/big"
 )
 
@@ -15,6 +16,7 @@ func main(){
 	fmt.Println(welcome)
 	
 	Rand()
+	AES()
 }
 
 func Rand(){
@@ -34,7 +36,16 @@ func Rand(){
 
 	fmt.Printf("Key: %x\n", key)
 	fmt.Println(n2)
-	fmt.Println("prime numbers",n3)
+	fmt.Printf("prime numbers %x",n3)
+}
+
+func AES(){
+	key :=make([]byte,32)
+	
+	block,err:=aes.NewCipher(key)
+	checkNil(err)
+	fmt.Printf("%x\n",block)
+	
 }
 func checkNil(e error){
 	if e!=nil{
