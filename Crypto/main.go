@@ -21,10 +21,15 @@ func main(){
 	checkNil(err2)
 	n2,err:= rand.Int(rand.Reader,max)
 	checkNil(err)
+
+	n3,err:= rand.Prime(rand.Reader,7)
+	checkNil(err)
 	
+
 
 	fmt.Printf("Key: %x\n", key)
 	fmt.Println(n2)
+	fmt.Println("prime numbers",n3)
 
 }
 
