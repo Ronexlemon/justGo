@@ -13,6 +13,11 @@ import (
 func main(){
 	welcome:="go cryptography"
 	fmt.Println(welcome)
+	
+	Rand()
+}
+
+func Rand(){
 	key:=make([]byte,32)
 	max := big.NewInt(1000)
 
@@ -30,9 +35,7 @@ func main(){
 	fmt.Printf("Key: %x\n", key)
 	fmt.Println(n2)
 	fmt.Println("prime numbers",n3)
-
 }
-
 func checkNil(e error){
 	if e!=nil{
 		panic(e)
