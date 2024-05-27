@@ -24,6 +24,7 @@ func main() {
 	
 	// fmt.Println("memory address of name is",&name)
 	m:=&name
+	
 	fmt.Println("memory address of m is",m)
 	fmt.Println("value  of name is",*m) //
 
