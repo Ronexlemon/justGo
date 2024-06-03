@@ -50,6 +50,13 @@ func WithoutGeneric() {
 	fmt.Printf("Non-Generic Sums: %v and %v \n", sumInts(ints), sumFloats(floats))
 
 }
+func WithouttGeneric() {
+	ints := map[string]int64{"first": 20, "second": 30}
+	floats := map[string]float64{"first": 20.50, "second": 30.05}
+
+	fmt.Printf("Non-Generic Sums: %v and %v \n", sumInts(ints), sumFloats(floats))
+
+}
 
 //end
 
