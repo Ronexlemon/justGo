@@ -18,6 +18,7 @@ func main(){
 	CopyBuffer()
 	CopyN()
 	Pipe()
+	ReadAll()
 	
 
 
@@ -73,4 +74,14 @@ func Pipe(){
 	if _,err:=io.Copy(os.Stdout,r); err !=nil{
 		log.Fatal(err)
 	}
+}
+
+//io ReadAll
+func ReadAll(){
+	r:=strings.NewReader("Hello ReadAll screw it\n")
+
+	b,err:= io.ReadAll(r)
+	if err!=nil{
+			log.Fatal(err)}
+	fmt.Println(b)
 }
