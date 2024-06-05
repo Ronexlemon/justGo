@@ -17,6 +17,7 @@ func main(){
 	}
 	CopyBuffer()
 	CopyN()
+	Pipe()
 	
 
 
@@ -56,4 +57,20 @@ func CopyN(){
 		log.Fatal(err)
 		}
 		fmt.Println("Bytes copied:",result)
+}
+
+//Go pipe
+
+func Pipe(){
+	r,w:=io.Pipe()
+
+	go func ()  {
+		defer w.Close()
+		fmt.Fprint(w,"Hello Pipe\n")
+		
+	}()
+
+	if _,err:=io.Copy(os.Stdout,r); err !=nil{
+		log.Fatal(err)
+	}
 }
