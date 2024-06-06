@@ -23,6 +23,7 @@ func main(){
 	ReadFull()
 	WriteString()
 	Writer()
+	Reader()
 	
 
 
@@ -146,6 +147,13 @@ func Writer(){
 
 }
 
+func Reader(){
+	file,_:= os.Open("./chat.txt")
+	reader := io.Reader(file)
+	buf := make([]byte,10)
+	n, _ := reader.Read(buf)
+	fmt.Println(n)
+}
 
 
 func checkNill(err error){
