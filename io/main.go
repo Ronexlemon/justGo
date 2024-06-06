@@ -21,6 +21,8 @@ func main(){
 	ReadAll()
 	ReadAtleast()
 	ReadFull()
+	WriteString()
+	Writer()
 	
 
 
@@ -103,6 +105,7 @@ func ReadAtleast(){
 	buf:=make([]byte,1)
 
 	resultint,err:=io.ReadAtLeast(r,buf,1)
+	
 	if err == io.ErrShortBuffer{
 		log.Fatal(err)
 	}
@@ -122,6 +125,28 @@ func ReadFull(){
 	Print(resultint)
 	
 }
+
+//Writestring
+func WriteString(){
+	if _,err:=io.WriteString(os.Stdout,"Yollow writeString"); err != nil{
+		log.Fatal(err)
+	}
+}
+
+
+//interface
+//Write
+
+func Writer(){
+	file,_:= os.Create("./chat.txt")
+	writer := io.Writer(file)
+	writer.Write([]byte("Hello Writer"))
+
+	defer file.Close()
+
+}
+
+
 
 func checkNill(err error){
 	log.Fatal(err)
