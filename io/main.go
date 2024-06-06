@@ -20,6 +20,7 @@ func main(){
 	Pipe()
 	ReadAll()
 	ReadAtleast()
+	ReadFull()
 	
 
 
@@ -110,7 +111,22 @@ func ReadAtleast(){
 
 }
 
+//ReadFull
+func ReadFull(){
+	r:=strings.NewReader("Hello ReadFull screw it\n")
+	buf:=make([]byte,10)
+	resultint,err := io.ReadFull(r,buf)
+	if err!=nil{
+		log.Fatal(err)
+		}
+	Print(resultint)
+	
+}
+
 func checkNill(err error){
 	log.Fatal(err)
+}
+func Print(input interface{}){
+	fmt.Println(input)
 }
 
