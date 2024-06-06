@@ -19,6 +19,7 @@ func main(){
 	CopyN()
 	Pipe()
 	ReadAll()
+	ReadAtleast()
 	
 
 
@@ -85,3 +86,31 @@ func ReadAll(){
 			log.Fatal(err)}
 	fmt.Println(b)
 }
+
+// Read Atleast
+
+func ReadAtleast(){
+	/*
+	*func ReadAtLeast(r Reader,[]byte,min int)(n int,error)
+	*The error is EOF only if no bytes were read.
+	*if an EOF happens after reading  fewer than min bytes, ReadAtLeast returns ErrUnexpectedEOF
+	*if min is greater than the length of buf,ReadAtLeast returns ErrShortBuffer.
+	*on Return , n>= min if and only if err ==nil
+	*if r returns an error having read at least min bytes, the error is droped
+	*/
+	r:=strings.NewReader("Hello ReadAtleast screw it\n")
+	buf:=make([]byte,1)
+
+	resultint,err:=io.ReadAtLeast(r,buf,1)
+	if err == io.ErrShortBuffer{
+		log.Fatal(err)
+	}
+
+	fmt.Println(resultint)
+
+}
+
+func checkNill(err error){
+	log.Fatal(err)
+}
+
