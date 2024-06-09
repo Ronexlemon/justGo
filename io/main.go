@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"goio/binary"
+	// "goio/binary"
 	"io"
 	"log"
 	"os"
@@ -23,13 +23,14 @@ func main() {
 	// ReadAtleast()
 	// ReadFull()
 	// WriteString()
-	// Writer()
-	// Reader()
+	//Writer()
+	//Reader()
 	//ByteReader()
 	//ByteScanner()
-	binaryForm,intform:=binary.ReturnBinaryAndAscii("H")
-	fmt.Println(binaryForm)
-	fmt.Println(intform)
+	// binaryForm,intform:=binary.ReturnBinaryAndAscii("H")
+	// fmt.Println(binaryForm)
+	// fmt.Println(intform)
+	Seeker()
 
 }
 
@@ -148,11 +149,42 @@ func Writer() {
 }
 
 func Reader() {
+	
 	file, _ := os.Open("./chat.txt")
 	reader := io.Reader(file)
-	buf := make([]byte, 10)
-	n, _ := reader.Read(buf)
-	fmt.Println(n)
+	buf := make([]byte, 1)
+	for{
+		n, err := reader.Read(buf)
+		fmt.Println(n)
+
+		if err !=nil{
+			break
+		}
+	}
+	defer file.Close()
+	
+	
+}
+//Seeker 
+
+func Seeker(){
+	file,_:=os.Open("./chat.txt")
+	reader:= io.Reader(file)
+	
+	buffer,err:= io.ReadAll(reader)
+	fmt.Printf("ReadAll buffer={%v}, err={%v} \n",string(buffer),err)
+	seeker:= reader.(io.Seeker)
+	seeker.Seek(0,io.SeekStart)
+	buffer,err= io.ReadAll(reader)
+	fmt.Printf("ReadAll buffer={%v}, err={%v} \n",string(buffer),err)
+
+	
+
+	if err!=nil{
+		log.Fatal(err)
+	}
+	
+
 }
 
 // Types
