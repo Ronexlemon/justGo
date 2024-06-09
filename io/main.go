@@ -15,15 +15,16 @@ func main(){
 		log.Fatal(err)
 		
 	}
-	CopyBuffer()
-	CopyN()
-	Pipe()
-	ReadAll()
-	ReadAtleast()
-	ReadFull()
-	WriteString()
-	Writer()
-	Reader()
+	// CopyBuffer()
+	// CopyN()
+	// Pipe()
+	// ReadAll()
+	// ReadAtleast()
+	// ReadFull()
+	// WriteString()
+	// Writer()
+	// Reader()
+	ByteReader()
 	
 
 
@@ -155,6 +156,23 @@ func Reader(){
 	fmt.Println(n)
 }
 
+//Types
+//ByteReader
+func ByteReader(){
+	r:=strings.NewReader("i")
+
+	reader:=io.ByteReader(r)
+	b,err:= reader.ReadByte()
+	if err!=nil{
+		fmt.Println("error")
+	}
+	
+	
+	
+
+	fmt.Printf("in binary form %b  \n",b)
+	fmt.Printf("in integer form %d  \n",b)
+}
 
 func checkNill(err error){
 	log.Fatal(err)
