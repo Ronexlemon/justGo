@@ -24,7 +24,8 @@ func main(){
 	// WriteString()
 	// Writer()
 	// Reader()
-	ByteReader()
+	//ByteReader()
+	ByteScanner()
 	
 
 
@@ -159,12 +160,12 @@ func Reader(){
 //Types
 //ByteReader
 func ByteReader(){
-	r:=strings.NewReader("i")
+	r:=strings.NewReader("7")
 
 	reader:=io.ByteReader(r)
 	b,err:= reader.ReadByte()
 	if err!=nil{
-		fmt.Println("error")
+		fmt.Println("error",err)
 	}
 	
 	
@@ -172,6 +173,22 @@ func ByteReader(){
 
 	fmt.Printf("in binary form %b  \n",b)
 	fmt.Printf("in integer form %d  \n",b)
+}
+
+//ByteScanner
+func ByteScanner(){
+	r:=strings.NewReader("Hello BytScanner")
+	reader:= io.ByteScanner(r)
+	for{
+		b,err:= reader.ReadByte()
+		if err!=nil && err ==io.EOF{
+			fmt.Println("error",err)
+			break
+			}
+			fmt.Printf("in binary form %b  \n",b)
+			fmt.Printf("in integer form %d  \n",b)
+			}
+			
 }
 
 func checkNill(err error){
