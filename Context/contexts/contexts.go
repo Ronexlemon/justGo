@@ -19,6 +19,15 @@ func callApi(ctx context.Context, userId int)(bool,error){
 
 	return true, nil
 }
+func callApi2(ctx context.Context, userId int)(bool,error){
+	time.Sleep(400 *time.Millisecond)
+
+	if ctx.Err() == context.DeadlineExceeded{
+		return false, errors.New("context time out exceeded")
+	}
+
+	return true, nil
+}
 
 func Contexts(){
 	fmt.Println("Starting")
