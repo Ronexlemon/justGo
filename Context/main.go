@@ -12,4 +12,5 @@ func main(){
 	fmt.Println(cont)
 	contexts.Contexts()
 	contexts.CallDoWork()
+	contexts.PassWithValue()
 }

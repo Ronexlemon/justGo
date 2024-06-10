@@ -8,6 +8,10 @@ import (
 	"time"
 )
 
+type requestid string
+
+var RequestId requestid
+
 
 
 func callApi(ctx context.Context, userId int)(bool,error){
@@ -61,6 +65,23 @@ func CallDoWork(){
 
 	time.Sleep(3 *time.Second)
 
+}
+
+
+//passwith value
+func enrichContext(ctx context.Context) context.Context{
+	return context.WithValue(ctx,RequestId,"12344")
+}
+func dosomething(ctx context.Context){
+	rID:= ctx.Value(RequestId)
+	fmt.Println(rID)
+}
+
+func PassWithValue(){
+	ctx:= context.Background()
+
+	ctx= enrichContext(ctx)
+	dosomething(ctx)
 }
 
 func checkNil(err error){
