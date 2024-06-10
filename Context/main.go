@@ -11,4 +11,5 @@ func main(){
 	cont:="Context are a way of adding cancelation or timeout"
 	fmt.Println(cont)
 	contexts.Contexts()
+	contexts.CallDoWork()
 }
