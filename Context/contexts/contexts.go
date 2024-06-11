@@ -119,6 +119,42 @@ func WithTimeOut() {
 			fmt.Println("time exceed")
 			}
 
+			 time.Sleep(3*time.Second)
+
+}
+
+// func WithDeadline(){
+// 	ctx,cance:= context.WithDeadline(context.Background(),2*time.)
+// }
+func WithCancel(){
+	ch := make(chan struct{})
+	run:= func(ctx context.Context){
+		n:=0
+		for{
+			select{
+				case <-ctx.Done():
+					fmt.Println("ctx done exiting")
+					close(ch)
+					return //not to leak the goroutine
+				default:
+					time.Sleep(time.Millisecond *300)
+					fmt.Println(n)
+					n++
+			}
+		}
+	}
+
+
+	ctx,cancel:= context.WithCancel(context.Background())
+	go func(){
+		time.Sleep(time.Second *2)
+		fmt.Println("Good bye")
+		cancel()
+	}()
+	go run(ctx)
+	fmt.Println("waiting to cancel...")
+	<-ch
+	fmt.Println("Bye")
 
 }
 func checkNil(err error) {
