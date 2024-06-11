@@ -13,4 +13,5 @@ func main(){
 	contexts.Contexts()
 	contexts.CallDoWork()
 	contexts.PassWithValue()
+	contexts.WithTimeOut()
 }
