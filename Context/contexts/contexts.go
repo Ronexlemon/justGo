@@ -157,6 +157,12 @@ func WithCancel(){
 	fmt.Println("Bye")
 
 }
+
+//WithTime
+
+func WaitForTZime() {
+	ctx,cancel:= context.WithTimeout(context.Background(),1  * time.Second)
+}
 func checkNil(err error) {
 	if err != nil {
 		//panic(err)
