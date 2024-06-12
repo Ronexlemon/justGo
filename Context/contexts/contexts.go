@@ -162,6 +162,9 @@ func WithCancel(){
 
 func WaitForTZime() {
 	ctx,cancel:= context.WithTimeout(context.Background(),1  * time.Second)
+
+	defer cancel()
+	fmt.Println(ctx)
 }
 func checkNil(err error) {
 	if err != nil {
