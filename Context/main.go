@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"gocontext/contexts"
+	"gocontext/apimock"
+	// "gocontext/contexts"
 )
 
 func main() {
@@ -14,5 +15,6 @@ func main() {
 	// contexts.CallDoWork()
 	// contexts.PassWithValue()
 	// contexts.WithTimeOut()
-	contexts.WithCancel()
+	// contexts.WithCancel()
+	apimock.ApiMock()
 }
