@@ -44,7 +44,7 @@ func simpleWebServer(){
 
 
 
-	mux.HandleFunc("/userData",srv.HandleUser)
+	mux.HandleFunc("/users/create",srv.HandleCreateUser)
 
 	s:= &http.Server{
 		Addr: address,
