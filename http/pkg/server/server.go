@@ -45,6 +45,12 @@ func(s *Server) HandleIndex(w http.ResponseWriter, r *http.Request){
 		w.Write([]byte(indexPage))
 
 }
+func(s *Server) HandleIndexe(w http.ResponseWriter, r *http.Request){
+	w.Header().Add("content-type","text/html")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(indexPage))
+
+}
 
 func(s *Server) HandleCreateUser(w http.ResponseWriter, r *http.Request){
 	switch r.Method{
