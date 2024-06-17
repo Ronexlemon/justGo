@@ -38,7 +38,7 @@ func simpleWebServer() {
 
 	mux.HandleFunc("/", srv.HandleIndex)
 	mux.HandleFunc("/users/create", srv.HandleCreateUser)
-	mux.HandleFunc("/user", srv.HandleGetUser)
+	mux.HandleFunc("/user/{name}", srv.HandleGetUser)
 
 	s := &http.Server{
 		Addr:           address,

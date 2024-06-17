@@ -5,6 +5,8 @@ import (
 	"io"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 var indexPage = `<!DOCTYPE html>
@@ -83,7 +85,9 @@ func (s *Server) HandleCreateUser(w http.ResponseWriter, r *http.Request) {
 func (s *Server) HandleGetUser(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
-		name := r.URL.Query().Get("name")
+		paramas := mux.Vars(r)
+		name:= paramas["name"]
+		
 		u, ok := s.users[name]
 		if !ok {
 			w.WriteHeader(http.StatusNotFound)
