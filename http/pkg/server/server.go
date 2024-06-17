@@ -7,89 +7,105 @@ import (
 	"net/http"
 )
 
-var indexPage =`<!DOCTYPE html>
+var indexPage = `<!DOCTYPE html>
 <html>
 <body>
 <h1>My First Web Page</h1>
 <p>This is my first web page.</p>
 </body>
 </html>`
-//user represents the JSON value thats send a response to a request
-type user struct{
-	Name string `json:"name`
+
+type user struct {
+	Name  string `json:"name"`
 	Email string `json:"email"`
-	Age int `json:"age"`
+	Age   int    `json:"age"`
 }
 
-//information that is stored per user
-type userInfo struct{
+type userInfo struct {
 	username string
-	age int
+	email    string
+	age      int
 }
 
-type Server struct{
-	users map[string]userInfo //key -> username
-
+type Server struct {
+	users map[string]userInfo
 }
 
-func New() *Server{
+func New() *Server {
 	return &Server{
 		users: make(map[string]userInfo),
 	}
 }
 
-
-func(s *Server) HandleIndex(w http.ResponseWriter, r *http.Request){
-	w.Header().Add("content-type","text/html")
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(indexPage))
-
-}
-func(s *Server) HandleIndexe(w http.ResponseWriter, r *http.Request){
-	w.Header().Add("content-type","text/html")
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(indexPage))
-
+func (s *Server) HandleIndex(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Content-Type", "text/html")
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(indexPage))
 }
 
-func(s *Server) HandleCreateUser(w http.ResponseWriter, r *http.Request){
-	switch r.Method{
-	case http.MethodPost , http.MethodPut:
-		if contentType := r.Header.Get("Content-Type");contentType != "application/json" {
+func (s *Server) HandleCreateUser(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case http.MethodPost, http.MethodPut:
+		if contentType := r.Header.Get("Content-Type"); contentType != "application/json" {
 			w.WriteHeader(http.StatusUnsupportedMediaType)
 			return
 		}
-	
-		 body,err := io.ReadAll(r.Body)
-		 
-		 if err != nil{
-			log.Printf("could not read request body : %v",err)
+
+		body, err := io.ReadAll(r.Body)
+		if err != nil {
+			log.Printf("could not read request body: %v", err)
 			w.WriteHeader(http.StatusInternalServerError)
 			return
-			}
-			defer r.Body.Close()
-			//unMarshall
-			var u user
-			errr:= json.Unmarshal(body,&u)
-			if errr !=nil{
-				log.Printf("could not unmarshal request body : %v",err)
-				w.WriteHeader(http.StatusBadRequest)
-				return
-			}
+		}
+		defer r.Body.Close()
 
-			log.Printf("Create user : %v",u.Name)
-			s.users[u.Name] = userInfo{
-				username: u.Name,
-				age: u.Age,
-			}
-			
+		var u user
+		err = json.Unmarshal(body, &u)
+		if err != nil {
+			log.Printf("could not unmarshal request body: %v", err)
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
 
-		
+		log.Printf("Create user: %v", u.Name)
+		s.users[u.Name] = userInfo{
+			username: u.Name,
+			email:    u.Email,
+			age:      u.Age,
+		}
+		w.WriteHeader(http.StatusCreated)
 
 	default:
 		w.WriteHeader(http.StatusMethodNotAllowed)
-
 	}
-	
+}
 
+func (s *Server) HandleGetUser(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case http.MethodGet:
+		name := r.URL.Query().Get("name")
+		u, ok := s.users[name]
+		if !ok {
+			w.WriteHeader(http.StatusNotFound)
+			return
+		}
+
+		ret := user{
+			Name:  name,
+			Age:   u.age,
+			Email: u.email,
+		}
+
+		msg, err := json.Marshal(ret)
+		if err != nil {
+			log.Printf("could not marshal user: %v", err)
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		w.Header().Add("Content-Type", "application/json")
+		w.Write(msg)
+
+	default:
+		w.WriteHeader(http.StatusMethodNotAllowed)
+	}
 }
