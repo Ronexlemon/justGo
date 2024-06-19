@@ -47,6 +47,7 @@ func simpleWebServer() {
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
 	}
+	
 	log.Printf("Start Server: %v", address)
 	log.Fatal(s.ListenAndServe())
 }
