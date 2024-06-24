@@ -6,7 +6,8 @@ import (
 )
 
 type Player interface{
-	KickBal()
+	KickBal() int
+	Name() string
 }
 
 type FootbalPlayer struct{
@@ -19,16 +20,21 @@ type Messi struct{
 	Speed int
 
 }
-func (f Messi)KickBal(){
+func (m *Messi)Name()string{return "Messi"}
+
+func (f *FootbalPlayer)Name()string{ return "Random"}
+func (f *Messi)KickBal()int{
 	shot := f.stamina +f.power * f.Speed
 
-	fmt.Println(" Messi The Player Shot is: %\v", shot)
+	return shot
+
+	
 }
 
-func (f FootbalPlayer)KickBal(){
+func (f *FootbalPlayer)KickBal()int{
 	shot := f.stamina +f.power
 
-	fmt.Println("The Player Shot is:", shot)
+	return shot
 }
 
 func Interfaces(){
@@ -36,14 +42,14 @@ func Interfaces(){
 	team:= make([]Player,11)
 
 	for i:=0; i <len(team)-1; i++{
-		team[i] = FootbalPlayer{
+		team[i] = &FootbalPlayer{
 			stamina:  rand.Intn(10),
 			power: rand.Intn(10),
 		}
 	}
 	
 	
-	team[len(team)-1] = Messi{
+	team[len(team)-1] = &Messi{
 		FootbalPlayer: FootbalPlayer{
 			stamina: 10,
 			power: 10,
@@ -51,6 +57,7 @@ func Interfaces(){
 		Speed: 10,
 	}
 	for _,player :=range team{
-		player.KickBal()
+		
+		fmt.Printf("%s is kicking the ball %d\n", player.Name(),player.KickBal())
 	}
 }
