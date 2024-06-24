@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-var value string = "mongodb+srv://huge65702:huge65702@cluster0.3s02tjq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
 
 type EmployeeRepo struct{
 	MongoCollection *mongo.Collection
