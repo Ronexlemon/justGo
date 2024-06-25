@@ -16,7 +16,8 @@ func main(){
 	welcome := "welcome to api development"
 	route := mux.NewRouter()
 
-	route.HandleFunc("/create",router.Insert)
+	route.HandleFunc("/create",router.Insert).Methods("POST")
+	route.HandleFunc("/employees",router.Employees).Methods("GET")
 	srv := &http.Server{
 		Handler:      route,
 		Addr:         "127.0.0.1:8000",

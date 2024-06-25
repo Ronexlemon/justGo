@@ -1,22 +1,21 @@
 package router
 
 import (
-	"context"
+	// "context"
+	"encoding/json"
 	"fmt"
 
 	"golangapis/config"
 	"golangapis/model"
 	"net/http"
-
-	"github.com/gorilla/mux"
+	// "github.com/gorilla/mux"
 )
-
 
 func ConnectDb() *config.EmployeeRepo {
 	mongoClientTest := config.NewMongoClient()
 
 	// defer statement should be placed after the potential error checks
-	defer mongoClientTest.Disconnect(context.Background())
+	// defer mongoClientTest.Disconnect(context.Background())
 
 	// connect to collection
 	collection := mongoClientTest.Database("company").Collection("employee")
@@ -25,26 +24,39 @@ func ConnectDb() *config.EmployeeRepo {
 	return &config.EmployeeRepo{MongoCollection: collection}
 }
 
-func Insert(w http.ResponseWriter, r *http.Request){
+func Insert(w http.ResponseWriter, r *http.Request) {
+	var emp model.Employee
+	
 
-	 params := mux.Vars(r)
-	 employeeId:= params["employee_id"]
-	 name:= params["name"]
-	 department:= params["department"]
+	err := json.NewDecoder(r.Body).Decode(&emp)
 
-	 
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	
+	   empRepo := ConnectDb()
 
-	  emp:= &model.Employee{
-		EmployeeID: employeeId,
-		Name: name,
-		Department: department,
-	 }
-	 fmt.Println("values are values",emp)
+	   result,err := empRepo.InsertEmployee(&emp)
+	   if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return}
+		
+		fmt.Println(result)
+		
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode("User Created successful")
 
 
-//   empRepo := ConnectDb()
+		
+}
 
-//   result,err := empRepo.InsertEmployee()
+func Employees(w http.ResponseWriter, r *http.Request){
+	empRepo := ConnectDb()
 
- 
+	employees, err := empRepo.FindAllEmployees()
+	if err !=nil{
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+	json.NewEncoder(w).Encode(employees)
 }
