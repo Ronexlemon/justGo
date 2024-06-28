@@ -55,6 +55,12 @@ func (s *Server) HandleIndextrt(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(indexPage))
 }
 
+
+func (s *Server) HandleIndextrert(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Content-Type", "text/html")
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(indexPage))
+}
 func (s *Server) HandleIndexw(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "text/html")
 	w.WriteHeader(http.StatusOK)
