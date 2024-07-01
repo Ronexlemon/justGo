@@ -8,6 +8,8 @@ import (
 	"golangapis/config"
 	"golangapis/model"
 	"net/http"
+
+	"github.com/gorilla/mux"
 	// "github.com/gorilla/mux"
 )
 
@@ -59,4 +61,50 @@ func Employees(w http.ResponseWriter, r *http.Request){
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 	json.NewEncoder(w).Encode(employees)
+}
+
+func FindEmployee(w http.ResponseWriter, r *http.Request){
+	empRepo := ConnectDb()
+
+	params := mux.Vars(r)
+	id := params["id"]
+
+	employee,err := empRepo.FindEmployeeById(id)
+	if err != nil{
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+	json.NewEncoder(w).Encode(employee)
+
+
+}
+
+func UpdateEmp(w http.ResponseWriter, r *http.Request){
+	empRepo := ConnectDb()
+	params:= mux.Vars(r)
+	id := params["id"]
+	var emp model.Employee
+	err:= json.NewDecoder(r.Body).Decode(&emp)
+	if err != nil{
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+		}
+
+		result,err:= empRepo.UpdateEmployeeById(id,&emp)
+		if err != nil{
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return}
+         res:=fmt.Sprintf("%v user updated %d",emp.Name,result)
+			json.NewEncoder(w).Encode(res)
+}
+
+func DeleteEmp(w http.ResponseWriter, r *http.Request){
+	empRepo := ConnectDb()
+	params:= mux.Vars(r)
+	id := params["id"]
+	_,err:= empRepo.DeleteEmployeeById(id)
+	if err != nil{
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+		}
+		json.NewEncoder(w).Encode("Employee deleted")
 }

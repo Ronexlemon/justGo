@@ -17,7 +17,10 @@ func main(){
 	route := mux.NewRouter()
 
 	route.HandleFunc("/create",router.Insert).Methods("POST")
+	route.HandleFunc("/employees/{id}",router.UpdateEmp).Methods("POST")
+	route.HandleFunc("/employees/{id}",router.DeleteEmp).Methods("DELETE")
 	route.HandleFunc("/employees",router.Employees).Methods("GET")
+	route.HandleFunc("/employees/{id}",router.FindEmployee).Methods("GET")
 	srv := &http.Server{
 		Handler:      route,
 		Addr:         "127.0.0.1:8000",
