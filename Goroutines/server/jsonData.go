@@ -21,6 +21,13 @@ type courseA struct {
 	Password string   `json:"-"`
 	Tags     []string `json:"tags,omitempty"`
 }
+type courseB struct {
+	Name     string   `json:"course_name"`
+	Price    int      `json:"price"`
+	Platform string   `json:"website"`
+	Password string   `json:"-"`
+	Tags     []string `json:"tags,omitempty"`
+}
 
 func JsonData() {
 	welcome := "welcome to json data"
