@@ -20,6 +20,7 @@ func Loops(){
 
 	//while for
 	value:=1
+	value2:= 3
 
 	for value <10{
 		if value ==6{
