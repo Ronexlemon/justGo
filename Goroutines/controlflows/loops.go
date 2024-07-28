@@ -1,6 +1,12 @@
 package controlflows
 
 import "fmt"
+type Types struct{
+	Name string
+	Age int
+	
+
+}
 
 func Loops(){
 	welcome:= "loops is looping"
