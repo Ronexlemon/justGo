@@ -1,8 +1,10 @@
 package main
 
-
-import ("gocontrol/ifelse"
-"gocontrol/forcontrol")
+import (
+	"gocontrol/forcontrol"
+	"gocontrol/ifelse"
+	"gocontrol/switchcontrol"
+)
 
 
 func main(){
@@ -10,5 +12,7 @@ func main(){
 	forcontrol.ListNumber()
 	forcontrol.MuliplicationTable()
 	ifelse.ListNumbersIfEvenOrOdd()
+	switchcontrol.Switch(5)
+	switchcontrol.Switch(50)
 
 }
