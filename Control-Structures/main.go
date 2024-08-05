@@ -8,5 +8,6 @@ import ("gocontrol/ifelse"
 func main(){
 	ifelse.IfElse()
 	forcontrol.ListNumber()
+	forcontrol.MuliplicationTable()
 
 }
