@@ -4,6 +4,7 @@ import (
 	"gocontrol/forcontrol"
 	"gocontrol/ifelse"
 	"gocontrol/switchcontrol"
+	"gocontrol/test"
 )
 
 
@@ -14,5 +15,6 @@ func main(){
 	ifelse.ListNumbersIfEvenOrOdd()
 	switchcontrol.Switch(5)
 	switchcontrol.Switch(50)
+	test.Solution()
 
 }
