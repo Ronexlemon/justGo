@@ -9,5 +9,6 @@ func main(){
 	ifelse.IfElse()
 	forcontrol.ListNumber()
 	forcontrol.MuliplicationTable()
+	ifelse.ListNumbersIfEvenOrOdd()
 
 }
