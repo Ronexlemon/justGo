@@ -40,3 +40,11 @@ func MultiDimension(){
 
 	}}
 }
+
+//len determined by the initialize elements
+
+func DetermineLen(){
+	x:=[...]int{1,2,3,4,5,5,6,7,7,8,8,}
+	fmt.Printf("len of x is %d \n",len(x))
+	
+}
