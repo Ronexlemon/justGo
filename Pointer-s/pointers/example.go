@@ -31,6 +31,6 @@ func DoTheSwap(){
 	xPtr:= &x
 	yPtr := &y
 	swap(xPtr, yPtr)
-	fmt.Printf("x before was 10 and y was 20 now y is %d and x is %d ",*yPtr,*xPtr)
+	fmt.Printf("x before was 10 and y was 20 now y is %d and x is %d \n ",*yPtr,*xPtr)
 
 }
