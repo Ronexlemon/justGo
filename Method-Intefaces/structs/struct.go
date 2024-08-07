@@ -11,18 +11,19 @@ type Circle struct{
 
 //area of a circle
 
-func area(c Circle)float64{
+func area(c *Circle)float64{
 	return math.Pi * c.radius *c.radius
 }
 
-func perimeter(c Circle)float64{
+func perimeter(c *Circle)float64{
+	
 	return 2 *math.Pi *c.radius
 }
 
 func GetCircleDetails(){
 	c:= Circle{radius: 10.00}
-	ar:= area(c)
-	sum:= perimeter(c)
+	ar:= area(&c)
+	sum:= perimeter(&c)
 
 	fmt.Println("the areas is",ar)
 	fmt.Println("the perimeter is",sum)
