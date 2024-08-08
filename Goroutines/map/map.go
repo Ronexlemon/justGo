@@ -32,3 +32,9 @@ func Mapping(){
 	
 }
 
+
+
+func newFunc(){
+	fmt.Println("new function")
+}
+
