@@ -9,4 +9,5 @@ func main(){
 	goroutines.Goroutine()
 	goroutines.MultipleGoroutines()
 	channel.Channel()
+	channel.SelectChannel()
 }
