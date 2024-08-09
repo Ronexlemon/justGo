@@ -6,7 +6,7 @@ import (
 )
 
 
-func WaitForDone(done chan bool){
+func WaitForDone(done chan <-bool){
 	fmt.Print("working...")
     time.Sleep(time.Second)
     fmt.Println("done")
