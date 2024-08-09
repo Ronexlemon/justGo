@@ -1,8 +1,12 @@
 package main
 
-import "goconcurrency/goroutines"
+import (
+	"goconcurrency/channel"
+	"goconcurrency/goroutines"
+)
 
 func main(){
 	goroutines.Goroutine()
 	goroutines.MultipleGoroutines()
+	channel.Channel()
 }
