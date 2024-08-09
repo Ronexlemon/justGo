@@ -10,5 +10,6 @@ func main(){
 	// goroutines.MultipleGoroutines()
 	// channel.Channel()
 	// channel.SelectChannel()
-	channel.Synchronize()
+	//channel.Synchronize()
+	channel.Chat()
 }
