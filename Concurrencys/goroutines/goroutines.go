@@ -1,6 +1,10 @@
 package goroutines
 
-import "fmt"
+import (
+	"fmt"
+	//"math/rand"
+	"time"
+)
 
 
 
@@ -8,6 +12,7 @@ import "fmt"
 func f(i int){
 	for g:=0;g <i; g++{
 		fmt.Println("all numbers",g)
+		
 	}
 }
 
@@ -15,10 +20,16 @@ func f(i int){
 func Goroutine(){
 	go f(20)
 	
-	var input string
-	 fmt.Scanln(&input)
-	fmt.Println("the value inputed is",input)
+	
 	
 	fmt.Println("done")
+	 time.Sleep(time.Millisecond*10)
 }
 
+func MultipleGoroutines(){
+	fmt.Println("New Routines")
+	for i:=0;i<10;i++{
+		go f(10)
+	}
+	time.Sleep(time.Millisecond*10)
+}

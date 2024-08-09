@@ -4,4 +4,5 @@ import "goconcurrency/goroutines"
 
 func main(){
 	goroutines.Goroutine()
+	goroutines.MultipleGoroutines()
 }
