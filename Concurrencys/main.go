@@ -2,6 +2,7 @@ package main
 
 import (
 	//"goconcurrency/channel"
+	"goconcurrency/contexts"
 	"goconcurrency/syncs"
 	//"goconcurrency/goroutines"
 )
@@ -16,4 +17,5 @@ func main(){
 	syncs.Mutex()
 	syncs.Mutex2()
 	syncs.MutexAndWaitGroup()
+	contexts.MainContext()
 }
