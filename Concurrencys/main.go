@@ -18,4 +18,5 @@ func main(){
 	syncs.Mutex2()
 	syncs.MutexAndWaitGroup()
 	contexts.MainContext()
+	contexts.ContextWithValue()
 }

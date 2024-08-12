@@ -51,3 +51,17 @@ func MainContext(){
 		fmt.Println(<-results)
 	}
 }
+
+func ContextWithValue(){
+	ctx:= context.Background()
+
+	ctx = context.WithValue(ctx,"userId",8500)
+	performTask(ctx)
+
+
+}
+
+func performTask(ctx context.Context){
+	userId:= ctx.Value("userId")
+	fmt.Println("user id is",userId)
+}
