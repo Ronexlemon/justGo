@@ -1,7 +1,8 @@
 package main
 
 import (
-	"goconcurrency/channel"
+	//"goconcurrency/channel"
+	"goconcurrency/syncs"
 	//"goconcurrency/goroutines"
 )
 
@@ -11,5 +12,8 @@ func main(){
 	// channel.Channel()
 	// channel.SelectChannel()
 	//channel.Synchronize()
-	channel.Chat()
+	//channel.Chat()
+	syncs.Mutex()
+	syncs.Mutex2()
+	syncs.MutexAndWaitGroup()
 }
