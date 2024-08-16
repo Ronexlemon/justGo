@@ -38,3 +38,7 @@ func newFunc(){
 	fmt.Println("new function")
 }
 
+func newFuntc(){
+	fmt.Println("new two function")
+}
+
