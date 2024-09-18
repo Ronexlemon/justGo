@@ -20,7 +20,21 @@ func change(){
 	fmt.Println(mySLICE)
 }
 
+//APPEND elements to a slice
+//SYNTAX slice_name= append(slice_name,element1,element2,...)
+func apppend(){
+	
+		mySLICE = append(mySLICE,10 )
+		fmt.Println(mySLICE)
+		//append slice to slice
+		mySLICE = append(mySLICE, mySLICE...)
+		fmt.Println(mySLICE)
+	
+}
+
+
 func Modify(){
 	access()
 	change()
+	apppend()
 }
