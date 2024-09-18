@@ -10,6 +10,17 @@ func access(){
 	fmt.Println(mySLICE[len(mySLICE)-1]) // the last element
 }
 
+//CHANGE element of a slice
+func change(){
+	for i:=0;i < len(mySLICE);i++{
+		mySLICE[i]= mySLICE[i]+1
+
+	}
+	
+	fmt.Println(mySLICE)
+}
+
 func Modify(){
 	access()
+	change()
 }
