@@ -9,6 +9,7 @@ func main(){
 	fmt.Println("goroutines")
 	goroutine.GoRoute()
 	goroutine.Chan()
+	goroutine.Select()
 
 	
 }
