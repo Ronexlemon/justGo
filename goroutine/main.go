@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	goroutine "goroute/goroute"
+	"goroute/pattern"
 )
 
 func main(){
@@ -10,6 +11,7 @@ func main(){
 	goroutine.GoRoute()
 	goroutine.Chan()
 	goroutine.Select()
+	pattern.ForSelectLoops()
 
 	
 }
