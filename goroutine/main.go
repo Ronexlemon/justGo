@@ -8,6 +8,7 @@ import (
 func main(){
 	fmt.Println("goroutines")
 	goroutine.GoRoute()
+	goroutine.Chan()
 
 	
 }
