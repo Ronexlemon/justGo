@@ -6,6 +6,7 @@ import "fmt"
 //Done Channel
 //Pipelines
 var Char []string = []string{"a","b","c","d"}
+var CharB []string = []string{"a","b","c","d"}
 
 
 func ForSelectLoops(){
