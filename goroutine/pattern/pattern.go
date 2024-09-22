@@ -23,6 +23,10 @@ func ForSelectLoops(){
 	for result := range charChannel{
 		fmt.Println(result)
 	}
+
+	for result2 := range charChannel{
+		fmt.Println(result2)
+	}
 	 
 }
 
