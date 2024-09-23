@@ -13,6 +13,7 @@ func main(){
 	goroutine.Select()
 	pattern.ForSelectLoops()
 	pattern.DoneChannel()
+	pattern.Pipeline()
 
 	
 }

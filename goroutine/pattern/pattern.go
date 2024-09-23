@@ -50,3 +50,44 @@ func DoneChannel() {
 	defer close(done)
 	time.Sleep(time.Second * 10)
 }
+
+//PipeLine
+
+func sliceToChannel(nums []int)<-chan int{
+	out:= make(chan int)
+	go func() {
+		for _,value := range nums{
+			out<-value
+		}
+		close(out)
+	}()
+	return out
+
+}
+func sq(nums <-chan int)<-chan int{
+	square:=make(chan int)
+	go func ()  {
+		for n:= range nums{
+			square<-n*n
+		}
+		close(square)
+		
+		
+	}()
+	return square
+	
+}
+func Pipeline(){
+	//input
+	nums := []int{1,2,3,4,5}
+	//Stage 1
+
+	dataChannel :=  sliceToChannel(nums)
+
+	//Stage 2
+	finalchannel:= sq(dataChannel)
+	//stage 3
+	for n:= range finalchannel{
+		fmt.Println(n)
+	}
+}
