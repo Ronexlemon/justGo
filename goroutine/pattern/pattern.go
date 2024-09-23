@@ -2,6 +2,7 @@ package pattern
 
 import (
 	"fmt"
+	"math/rand"
 	"time"
 )
 
@@ -90,4 +91,76 @@ func Pipeline(){
 	for n:= range finalchannel{
 		fmt.Println(n)
 	}
+}
+
+//CHAPTER 2
+
+func Game(){
+	start:= time.Now()
+
+	defer func ()  {
+		fmt.Println(time.Since(start))
+		
+	}()
+	players := []string{"Lemonr","John Doe","Kales","Ban"}
+	for _,player:= range players{
+		go attack(player)
+	}
+time.Sleep(time.Second *1)
+}
+func Gamev1(){
+	start:= time.Now()
+	defer func ()  {
+		fmt.Println(time.Since(start))}()
+
+		smokeItOut := make(chan bool)
+		monster := "Hakes"
+		go attackv1(smokeItOut,monster)
+	fmt.Print(<-smokeItOut)
+	close(smokeItOut)
+}
+
+func attackv1(done chan bool,monster string){
+	time.Sleep(time.Second) // prepare for launch
+	fmt.Println(monster,"is attacked")
+	done <- true
+	
+
+}
+func attack(player string){
+	fmt.Println(player,"is attacking")
+	time.Sleep(time.Second)
+	
+}
+
+//channelV2 -> buffer
+func Gamev2(){
+	channel := make(chan string,2)
+	channel <- "First"
+	channel <- "Second"
+	fmt.Println(<-channel)
+	fmt.Println(<-channel)
+	
+}
+func Gamev2_1(){
+	channel := make(chan string)
+	numRounds := 3
+	go throwDart(channel,numRounds)
+	for i:=0; i< numRounds ;i++{
+		fmt.Println(<-channel)
+	}
+	
+
+}
+
+func throwDart(channel chan string, rounds int){
+	rand.Seed(time.Now().UnixNano())
+	
+	for i:=0; i< rounds ;i++{
+		score := rand.Intn(10)
+		channel <- fmt.Sprint("You scored",score)
+
+	}
+	
+
 }
